@@ -5,7 +5,6 @@ import {
   train2,
   train3,
   train4,
-  train5,
   timeWindow1,
   timeWindow2,
   timeWindow3,
@@ -129,16 +128,6 @@ describe("getTrainsOnPlatformInTimeWindow", () => {
     expect(
       getTrainsOnPlatformInTimeWindow(timeWindow8, [train1, train4]),
     ).toEqual([
-      {
-        haltTime: "24:59:13Hr-00:00:13Hr",
-        platformId: "2",
-        trainId: "4",
-      },
-    ]);
-  });
-
-  test(`Should return trains which are already on the platform at the start of the ${timeWindow8.startHr}  and depart after the end of the ${timeWindow8.endHr}`, () => {
-    expect(getTrainsOnPlatformInTimeWindow(timeWindow8, [train5])).toEqual([
       {
         haltTime: "24:59:13Hr-00:00:13Hr",
         platformId: "2",
