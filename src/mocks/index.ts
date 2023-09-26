@@ -77,6 +77,17 @@ export const train4 = {
   ],
 };
 
+export const train5 = {
+  id: "4",
+  schedule: [
+    {
+      arrHr: "24:00:13",
+      deptHr: "10:00:13",
+      platformId: "2",
+    },
+  ],
+};
+
 export const timeWindow1 = {
   startHr: "15:01:00",
   endHr: "15:01:02",
