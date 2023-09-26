@@ -37,7 +37,9 @@ const isHaltScheduledBetweenTimeWindow = (
     (trainArrHrInSeconds >= windowStartHrInSeconds &&
       trainArrHrInSeconds <= windowEndHrInSeconds) ||
     (trainDeptHrInSeconds <= windowEndHrInSeconds &&
-      trainDeptHrInSeconds >= windowStartHrInSeconds)
+      trainDeptHrInSeconds >= windowStartHrInSeconds) ||
+    (trainArrHrInSeconds <= windowStartHrInSeconds &&
+      trainDeptHrInSeconds >= windowEndHrInSeconds)
   ) {
     return true;
   }
