@@ -24,14 +24,14 @@ const isHaltScheduledBetweenTimeWindow = (
   const trainArrHrInSeconds = getSecondsFromHour(schedule.arrHr);
   const trainDeptHrInSeconds = getSecondsFromHour(schedule.deptHr);
 
-  if (trainDeptHrInSeconds < trainArrHrInSeconds) {
-    if (
-      trainArrHrInSeconds >= windowStartHrInSeconds &&
-      trainDeptHrInSeconds <= windowStartHrInSeconds
-    ) {
-      return true;
-    }
-  }
+  // if (trainDeptHrInSeconds < trainArrHrInSeconds) {
+  //   if (
+  //     trainArrHrInSeconds >= windowStartHrInSeconds &&
+  //     trainDeptHrInSeconds <= windowStartHrInSeconds
+  //   ) {
+  //     return true;
+  //   }
+  // }
 
   if (
     (trainArrHrInSeconds >= windowStartHrInSeconds &&
@@ -44,8 +44,6 @@ const isHaltScheduledBetweenTimeWindow = (
 
   return false;
 };
-
-let platformsOnStation = 2;
 
 export const getTrainsOnPlatformInTimeWindow = (
   timeWindow: TimeWindow,
@@ -60,25 +58,21 @@ export const getTrainsOnPlatformInTimeWindow = (
   trains.forEach((train) => {
     const haltScheduleForTrain = train.schedule;
 
-    if (trainsOnPlatformInTimeWindow.length < platformsOnStation) {
-      haltScheduleForTrain.forEach((schedule) => {
-        const trainArrHrInSeconds = getSecondsFromHour(schedule.arrHr);
-        const trainDeptHrInSeconds = getSecondsFromHour(schedule.deptHr);
+    haltScheduleForTrain.forEach((schedule) => {
+      const trainArrHrInSeconds = getSecondsFromHour(schedule.arrHr);
+      const trainDeptHrInSeconds = getSecondsFromHour(schedule.deptHr);
 
-        if (
-          trainArrHrInSeconds !== trainDeptHrInSeconds &&
-          isHaltScheduledBetweenTimeWindow(schedule, timeWindow)
-        ) {
-          trainsOnPlatformInTimeWindow.push({
-            trainId: train.id,
-            platformId: schedule.platformId,
-            haltTime: `${schedule.arrHr}Hr-${schedule.deptHr}Hr`,
-          });
-        }
-      });
-    } else {
-      return trainsOnPlatformInTimeWindow;
-    }
+      if (
+        trainArrHrInSeconds !== trainDeptHrInSeconds &&
+        isHaltScheduledBetweenTimeWindow(schedule, timeWindow)
+      ) {
+        trainsOnPlatformInTimeWindow.push({
+          trainId: train.id,
+          platformId: schedule.platformId,
+          haltTime: `${schedule.arrHr}Hr-${schedule.deptHr}Hr`,
+        });
+      }
+    });
   });
 
   return trainsOnPlatformInTimeWindow;
