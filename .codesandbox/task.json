@@ -1,0 +1,19 @@
+{
+  "setupTasks": ["npm i", "npm run start", "npm run test"],
+  "tasks": {
+    "install-dependencies": {
+      "name": "INSTALL",
+      "command": "npm i"
+    },
+    "start-app": {
+      "name": "RUN",
+      "command": "npm run start",
+      "runAtStart": true
+    },
+    "test": {
+      "name": "TEST",
+      "command": "npm run test",
+      "runAtStart": true
+    }
+  }
+}
