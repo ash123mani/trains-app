@@ -24,15 +24,6 @@ const isHaltScheduledBetweenTimeWindow = (
   const trainArrHrInSeconds = getSecondsFromHour(schedule.arrHr);
   const trainDeptHrInSeconds = getSecondsFromHour(schedule.deptHr);
 
-  // if (trainDeptHrInSeconds < trainArrHrInSeconds) {
-  //   if (
-  //     trainArrHrInSeconds >= windowStartHrInSeconds &&
-  //     trainDeptHrInSeconds <= windowStartHrInSeconds
-  //   ) {
-  //     return true;
-  //   }
-  // }
-
   if (
     (trainArrHrInSeconds >= windowStartHrInSeconds &&
       trainArrHrInSeconds <= windowEndHrInSeconds) ||
